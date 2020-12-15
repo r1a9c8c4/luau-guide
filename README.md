@@ -83,7 +83,7 @@ print(helloWorld)
 print(justReturnsHelloWorld())
 ```
 That will print `Hello world` twice. Yes, you can use function calls in function parameters themselves:
-```
+```lua
 local function printWhatIsGiven(printThis)
   print(printThis)
 end
@@ -114,7 +114,23 @@ giveMeVaules(nil)
 ```
 Even though I did provide the function a value, the value was nil, so it still printed nil. 
 ## Comments
+Comments can be used to leave messages in code without interrupting it. There are two types: singular line and multi-line.
 
+Singular line comments are started by typing --. They then make everything on that line following it a comment. Here's an example.
+```lua
+local var = "Hello!" -- Here's a comment!
+```
+Multi-line comments are started by --\[\[ and ended with a ]]. These turn everything between the --\[\[ and the ]] into a comment.
+```lua
+local var = --[[Here's a multi-line comment!]] "Hello"
+```
+```lua
+--[[
+Multiple lines
+are great!
+]]
+local var = "Hello"
+```
 ## end
 
 ## if and booleans
