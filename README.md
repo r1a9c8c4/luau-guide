@@ -131,8 +131,102 @@ are great!
 ]]
 local var = "Hello"
 ```
+From now on I will be showing expected outputs by doing --> \[output] after the print.
 ## end
+Many things in Lua will require you to provide code in order to run. An example would be functions. But how do you tell Lua when the code is over? `end` is there for you.
 
+Here is an example of using `end` in a function:
+```function endThis()
+
+end -- An end is here
+```
+Confused? I get you. Here's an example showing the function and the end. Everything to the right of the `|` is the code that will be run when the function is called.
+```lua
+-- This code won't actually work, it's just an example
+function endThis() 
+| print("Hi!")
+| print("Hello!")
+|
+|
+end -- An end is here
+```
+In the case that you have nested code (functions inside functions, loops inside loops, etc), the end will end the one that is closest above. Here is an example. I marked which one connects to each.
+```lua
+function func() -- (B)
+function func2() -- (A)
+
+end -- (A)
+end -- (B)
+```
 ## if and booleans
+`if` lets you run code based on whether or not a statement is true or false. If the statement is true, it will run. If not, it won't. The format is this:
+```lua
+if booleanStatement then
 
+end
+```
+You can also use elseif and else. 
+
+`else` runs if the boolean statement is false. It acts like an end except that it will only end the `if` statement it is connected to. It looks like this:
+```lua
+if booleanStatement then
+
+else
+
+end
+```
+`elseif` act like a mix of an if and an else. Here is an example.
+```lua
+if booleanStatement then
+
+elseif booleanStatement2 then
+
+end
+```
+`elseif`s will only run if the `if` statement is `false`, even if the `elseif` statement is `true`. You can have as many `elseif`s as you'd like, but only 1 else. You can also have `elseif`s and an `else`!
+```lua
+if booleanStatement then
+
+elseif booleanStatement2 then
+
+else
+
+end
+```
+Now for booleans. Booleans are statements that either equate to `true` or `false`. Booleans have certain signs that dictate what kind of operation you are doing (see below).
+Symbol | Name | Example (will be true)
+------------ | ------------- | -------------
+== | Equal to                 | 1 == 1
+~= | Not equal to             | 1 ~= 2
+\>  | Greater than             | 2 \> 1
+<  | Less than                | 2 < 1
+\>= | Greater than or equal to | 2 \>= 1
+<= | Less than or equal to    | 1 <= 1
+
+Here is an example of a boolean statement in an `if` statement:
+```lua
+if 1 == 1 then
+  print("Math works!") --> Math works!
+else
+  print("Math is broken") -- Won't print because 1 == 1 is true
+end 
+```
+There are 3 operators you can use in booleans; `and`, `or`, and `not`. These modify the normal value of the boolean.
+
+`and` will compare the boolean statements to the left and right. If both of them are true the entire statement will be true, otherwise it will be false.
+`or` will compare the boolean statements to the left and right. If one or more are true the entire statement will be true, otherwise it will be false.
+`not` will turn the statement to the right the opposite of what it was. True becomes false and vice versa.
+
+Here is an example of all of them.
+```lua
+if 1 == 1 and 2 == 1 then
+  print("Hello broken world") -- This won't print because while 1 == 1 is true, 2 == 1 is false.
+end
+if 1 == 1 or 2 == 1 then
+  print("Hello working world") -- This will print because 1 == 1. The 2 == 1 is ignored.
+end
+if not 1 == 1 then
+  print("Hello broken world") -- This won't print because the opposite of true is false, and 1 == 1 is true.
+end
+```
 ## Tables and Dictonaries
