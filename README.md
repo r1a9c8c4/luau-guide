@@ -1,4 +1,5 @@
 # lua-guide
+If you'd like to make changes to this, DM Raccoonyz#0001 and I'll probably make you a contributor.
 ## What is Luau?
 Luau is a modified version of [Lua](https://www.lua.org/) used for game development on Roblox. It has some features removed and others added. 
 ## Making a script on Roblox
