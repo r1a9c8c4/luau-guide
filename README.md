@@ -94,11 +94,27 @@ printWhatIsGiven(justReturnsHelloWorld())
 That will print Hello world.
 ## nil
 
-`nil` is very important. It act as Lua's version of null. If it doesn't exist, it's probably nil.
+`nil` is very important. It is a data type that acts as Lua's version of null. For example, all variables are nil by default.
 
-An example is if you don't provide a value
+An example is if you don't provide a value to a function where the function wants one.
 
+```lua
+function giveMeValues(thisWillBeNil)
+  print(value)
+end
+giveMeVaules()
+```
+That will print `nil`. You can also use nil as a global. 
+```lua
+function giveMeValues(thisWillBeNil)
+  print(value)
+end
+giveMeVaules(nil)
+```
+Even though I did provide the function a value, the value was nil, so it still printed nil. 
 ## Comments
+
+## end
 
 ## if and booleans
 
