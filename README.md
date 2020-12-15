@@ -7,6 +7,10 @@ Roblox has 3 different types of scripts: Server scripts, local scripts, and modu
 
 To create a server script, go into Roblox Studio. Server scripts will run in the workspace, in GUIs, and in ServerScriptService. We'll make one in the ServerScriptService. Go into your Explorer menu (View -> Explorer) and hover over ServerScriptService. Right click on it and then click on `Insert Object...`. Search for just "Script", and click on `Script`. You should now be in the script editor. If you ever leave the script editor you can get back into it by double clicking on the script you want to edit.
 
+
+![Example](https://cdn.discordapp.com/attachments/427201562293698562/788524366169112576/unknown.png)
+
+
 To run a script, go to Home -> Play.
 ## Variables
 We will start off with variables. Variables are a key component of programming. They can hold values which is extremely useful. There are 2 types of variables - local and global. I'll explain the differences later. (I know, a lot of promises) You should always use local variables whenever possible for many reasons.
