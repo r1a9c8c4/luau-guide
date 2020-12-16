@@ -259,7 +259,7 @@ local swordData = {
 }
 ```
 The difference here is that the dictionary part of a table has no notion of order. This will make sense when we get to generic for loops. Also, you can see we can use a more descriptive index. `damagePerSwing` and `durability` are keys mapped to the values 10 and 50. If we need the number 10 for example from the table we can access it doing `swordData.damagePerSwing`.
-```
+```lua
 print(swordData.damagePerSwing) --> 10
 ```
 Also keep in mind that the length operator does not take into account the length of a table's dictionary part.
