@@ -233,4 +233,33 @@ if not (1 == 1) then
   print("Hello broken world") -- This won't print because the opposite of true is false, and 1 == 1 is true.
 end
 ```
-## Tables and Dictonaries
+## Tables
+Lua also introduces the table type, which has 2 parts: dictionary part and array part. The array part is an ordered collection of values. Think of it like a list. The dictionary part is an unordered collection of keys to values.
+
+Example of an array:
+```lua
+local letters = { "a", "b", "c" }
+```
+It is constructed with curly braces, then each *element* is separated by a comma or a semicolon. When you want to access something from the array you use square brackets and the position of the item you want to get:
+```
+local secondLetter = letters[2]
+print(secondLetter) --> "b"
+```
+In other languages 0-based indexing is used, so `array[0]` would give you `"a"`, `array[1]` would give `"b"`, and so on. However, Lua uses 1-based indexing, so `array[1]` gives `"a"` and so on.
+
+You can also get the length of a table's array part using the unary `#` operator:
+```lua
+print(#letters) --> 3
+```
+Now an example with a dictionary.
+```lua
+local swordData = {
+    damagePerSwing = 10,
+    durability = 50
+}
+```
+The difference here is that the dictionary part of a table has no notion of order. This will make sense when we get to generic for loops. Also, you can see we can use a more descriptive index. `damagePerSwing` and `durability` are keys mapped to the values 10 and 50. If we need the number 10 for example from the table we can access it doing `swordData.damagePerSwing`.
+```
+print(swordData.damagePerSwing) --> 10
+```
+Also keep in mind that the length operator does not take into account the length of a table's dictionary part.
