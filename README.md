@@ -233,4 +233,46 @@ if not (1 == 1) then
   print("Hello broken world") -- This won't print because the opposite of true is false, and 1 == 1 is true.
 end
 ```
+## Short-circuit operators
+Some operators, such as `and` and `or` are short-circuit operators. This means that they're designed to evaluate the least amount of things to determine the result.
+
+As an example, with `x and y`, if `x` is falsy, it will evaluate to `x`. Otherwise, it will evaluate to `y`. Here's some code showing this behavior.
+```lua
+local function and_operator(x, y)
+	if x then
+		return y
+	else
+		return x
+	end
+end
+```
+In here, `and` only needs to evaluate one thing, which is `x`.
+
+With `or`, it'd act like the below code.
+```lua
+local function or_operator(x, y)
+	if x then
+		return x
+	else
+		return y
+	end
+end
+```
+
+Some people take advantage of this. For example, when implementing ternary operators, instead of writing the below
+```lua
+local result
+if x then
+	result = y
+else
+	result = z
+end
+````
+you can write `result = x and y or z`. Note that this assumes that `y` is truthy.
+
+If `x` is truthy, `x and y` would evaluate to `y`, and as seen above, `y or z` where `y` is truthy would evaluate to `y`.
+
+However, if `x` is falsy, we'd now evaluate `x or z`. This would evaluate to `z`.
+
+Keep in mind that you don't need to understand how exactly this works, as long as you know how to use it.
 ## Tables and Dictonaries
