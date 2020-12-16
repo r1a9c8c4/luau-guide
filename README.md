@@ -241,7 +241,7 @@ Example of an array:
 local letters = { "a", "b", "c" }
 ```
 It is constructed with curly braces, then each *element* is separated by a comma or a semicolon. When you want to access something from the array you use square brackets and the position of the item you want to get:
-```
+```lua
 local secondLetter = letters[2]
 print(secondLetter) --> "b"
 ```
