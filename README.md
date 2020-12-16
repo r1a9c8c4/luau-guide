@@ -229,7 +229,7 @@ end
 if 1 == 1 or 2 == 1 then
   print("Hello working world") -- This will print because 1 == 1. The 2 == 1 is ignored.
 end
-if not 1 == 1 then
+if not (1 == 1) then
   print("Hello broken world") -- This won't print because the opposite of true is false, and 1 == 1 is true.
 end
 ```
