@@ -264,8 +264,71 @@ print(swordData.damagePerSwing) --> 10
 ```
 Also keep in mind that the length operator does not take into account the length of a table's dictionary part.
 ## wait
-WIP
+`wait`, as it implies, is a function that *waits* for the amount of seconds provided.
+```lua
+wait(5)
+print("hello")
+```
+After *about* 5 seconds you will see `"hello"` printed in the console. Why did I say about? That is because `wait` does not wait the exact amount of time provided. It only guarantees that it will wait at *least* that amount of time. Sometimes it can take longer. `wait` returns the actual time waited, so if you need to make changes over time, you can make use of the delta time.
+```lua
+local dt = wait(5)
+print(dt) --> 5.0061945999987
+```
+The number printed was just an example when I ran it; as mentioned `wait` doesn't always wait the same amount.
 ## Loops
-WIP
+Have you ever found yourself needing to repeat code for several amounts of times? Loops are your friend! The simplest loop, the `while` loop, executes its body *while* (see what I did there?) the given condition is met:
+```lua
+local num = 0
+
+while num < 10 do
+	num += 1
+	print(num)
+end
+
+print("Loop finished")
+```
+When you execute this, you will notice that the `num` variable is incremented by 1 on each cycle of the loop, *while* `num` was less than 10. Once `num` hit 10, the loop broke as `10 < 10` is false. And after that, `"Loop finished"` prints. Code under loops doesn't execute until after the loop terminates.
+
+The next kind of loop, `repeat until`, will as it implies, *repeat* its body *until* the given condition is met.
+
+Using the same example as above:
+```lua
+local num = 0
+
+repeat
+	num += 1
+	print(num)
+until num >= 10
+```
+Once `num` hits 10, `10 >= 10` is true, so the loop breaks since the condition became true.
+
+**Note:** `repeat until` loops always execute their body at least once. This is because the condition is checked after the body is executed. This can be demonstrated with this example:
+```lua
+repeat
+	print("Hello") -- prints
+until true
+
+while false do
+	print("World") -- doesn't print
+end
+```
+Next up, the `for` loop! Whenever you need to run code a set amount of times, the numeric `for` will come in handy.
+```lua
+for i = 1, 10, 1 do
+	print(i)
+end
+```
+The first number, 1, is where you want to start. The secodn number is your goal, i.e. the number you want to reach. The third number is the step, i.e. how much to increment the start by on each cycle of the loop. By default the third number is optional; so the code could boil down to
+```lua
+for i = 1, 10 do
+	print(i)
+end
+```
+You can also count *down* using a numeric `for`, but make sure to specify a *negative* step!
+```lua
+for i = 20, 0, -0.5 do
+	print(i)
+end
+```
 ## Instances
 WIP
