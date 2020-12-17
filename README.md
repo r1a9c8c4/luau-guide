@@ -1,5 +1,5 @@
 # lua-guide
-If you'd like to make changes to this, DM Raccoonyz#0001 and I'll probably make you a contributor.
+If you'd like to make changes to this, DM Raccoonyz#0001 and I'll probably make you a contributor. Alternatively, you can make a pull request.
 ## What is Luau?
 Luau is a modified version of [Lua](https://www.lua.org/) used for game development on Roblox. It has some features removed and others added. 
 ## Making a script on Roblox
@@ -241,7 +241,7 @@ Example of an array:
 local letters = { "a", "b", "c" }
 ```
 It is constructed with curly braces, then each *element* is separated by a comma or a semicolon. When you want to access something from the array you use square brackets and the position of the item you want to get:
-```
+```lua
 local secondLetter = letters[2]
 print(secondLetter) --> "b"
 ```
@@ -259,7 +259,13 @@ local swordData = {
 }
 ```
 The difference here is that the dictionary part of a table has no notion of order. This will make sense when we get to generic for loops. Also, you can see we can use a more descriptive index. `damagePerSwing` and `durability` are keys mapped to the values 10 and 50. If we need the number 10 for example from the table we can access it doing `swordData.damagePerSwing`.
-```
+```lua
 print(swordData.damagePerSwing) --> 10
 ```
 Also keep in mind that the length operator does not take into account the length of a table's dictionary part.
+## wait
+WIP
+## Loops
+WIP
+## Instances
+WIP
