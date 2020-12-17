@@ -263,3 +263,9 @@ The difference here is that the dictionary part of a table has no notion of orde
 print(swordData.damagePerSwing) --> 10
 ```
 Also keep in mind that the length operator does not take into account the length of a table's dictionary part.
+## wait
+WIP
+## Loops
+WIP
+## Instances
+WIP
