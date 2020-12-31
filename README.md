@@ -52,8 +52,7 @@ Keep in mind variables cannot be used in strings.
 Copy and pasting code over and over can be a pain. Functions are there to fix that! Functions can also be used as parameters in functions.
 
 Functions act like a variable except they can be called upon. Pretty nifty, huh?
-
-Trippy, right? If you are defining a function to be used, you can do one of 2 options. Either:
+If you are defining a function to be used, you can do one of 2 options. Either:
 ```lua
 local function nameOfFunction(nameOfParam1, nameOfParam2)
 
