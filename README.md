@@ -104,14 +104,14 @@ An example is if you don't provide a value to a function where the function want
 
 ```lua
 function giveMeValues(thisWillBeNil)
-  print(thisWillBeNil)
+  print(value)
 end
 giveMeVaules()
 ```
 That will print `nil`. You can also use nil as a global. 
 ```lua
 function giveMeValues(thisWillBeNil)
-  print(thisWillBeNil) 
+  print(value)
 end
 giveMeVaules(nil)
 ```
@@ -329,5 +329,24 @@ for i = 20, 0, -0.5 do
 	print(i)
 end
 ```
+Also there is continue statement, it used inside a loop to skip the rest of the statements in the body of loop for the current iteration and jump to the beginning of the loop for next iteration.
+Example of it:
+```lua
+for i = 1, 7 do 
+    #skip if number is 5
+    if i == 5 then
+        continue
+    end
+end
+--[[Output:
+1 
+2 
+3
+4
+6
+7
+]]
+```
+
 ## Instances
 WIP
