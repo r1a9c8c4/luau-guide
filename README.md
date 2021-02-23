@@ -261,7 +261,13 @@ The difference here is that the dictionary part of a table has no notion of orde
 ```lua
 print(swordData.damagePerSwing) --> 10
 ```
-Also keep in mind that the length operator does not take into account the length of a table's dictionary part.
+You can also access a key from a table by using square brackets, similar to a table. An example: 
+```lua
+print(swordData["damagePerSwing"]) --> 10
+```
+This is helpful for if you need to access a key that has a space in its name, or if you need to access a key using a variable.
+
+Keep in mind that the length operator does not take into account the length of a table's dictionary part.
 ## wait
 `wait`, as it implies, is a function that *waits* for the amount of seconds provided.
 ```lua
@@ -330,4 +336,35 @@ for i = 20, 0, -0.5 do
 end
 ```
 ## Instances
-WIP
+Instances are the building blocks of any Roblox game. Parts, scripts, even the Workspace itself is an instance. Each instance has a specific type of class that they are. For example, the workspace's class is Workspace while a part's class is Part.
+
+Instances are managed by a Parent-Child relationship. All instances (excluding the **game** global) have a parent. These instances can then have any number of children. For example, the **Workspace** is a child of the **game**, and the **Terrain**'s parent is the **Workspace**. You can access the children of an instance in a manner much like a dictionary. Each child's name acts as the key for the specific child. An example is below.
+```lua
+print(game.Workspace.Baseplate) --> Baseplate
+```
+And just like a normal dictionary, you can access a child by using square brackets as well.
+```lua
+print(game.Workspace["Baseplate"]) --> Baseplate
+```
+
+Properties, much like their name suggests, are values that determine specific features of an instance. Some properties are unique to a specific class, some are across multiple classes, and some are across ALL classes. Properties typically have a specific value type.
+
+Properties are accessed like you'd access a child. Keep in mind that if a property and a child have the same name, then the property comes first when indexing.
+```lua
+print(game.Workspace.Baseplate.Name) --> Baseplate
+print(game.Workspace.Baseplate["Name"]) --> Baseplate
+```
+Editing a property is similar to editing the value of a dictionary. You use an equal sign.
+```lua
+local baseplate = game.Workspace.Baseplate
+print(baseplate.Name) --> Baseplate
+baseplate.Name = "Platebase"
+print(baseplate.Name) --> Platebase
+```
+The two most important properties are **Parent** and **Name**. The **Parent** property determines the parent of an instance, while the **Name** property determines the name of an instance. Remember that the name of an instance is the key when indexing it from its parent.
+```lua
+print(game.Workspace.Baseplate.Parent) --> Workspace
+game.Workspace.Baseplate.Name = "Platebase"
+game.Workspace.Platebase.Parent = game.ServerStorage -- ServerStorage is a child of the game global used for storing items that can only be seen by the server. The server-client relationship will be explaiend later.
+print(game.ServerStorage.Platebase) --> Platebase
+```
