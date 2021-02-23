@@ -104,14 +104,14 @@ An example is if you don't provide a value to a function where the function want
 
 ```lua
 function giveMeValues(thisWillBeNil)
-  print(value)
+  print(thisWillBeNil)
 end
 giveMeVaules()
 ```
 That will print `nil`. You can also use nil as a global. 
 ```lua
 function giveMeValues(thisWillBeNil)
-  print(value)
+  print(thisWillBeNil) 
 end
 giveMeVaules(nil)
 ```
