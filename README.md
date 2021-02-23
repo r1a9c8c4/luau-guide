@@ -335,6 +335,23 @@ for i = 20, 0, -0.5 do
 	print(i)
 end
 ```
+If you want to skip a certain cycle of a loop, you can use the continue statement. An example is below.
+```lua
+for i = 1, 7 do 
+    if i == 5 then
+        continue
+    end
+    print(i)
+end
+--[[  Output:
+1 
+2 
+3
+4
+6
+7
+]]
+```
 ## Instances
 Instances are the building blocks of any Roblox game. Parts, scripts, even the Workspace itself is an instance. Each instance has a specific type of class that they are. For example, the workspace's class is Workspace while a part's class is Part.
 
