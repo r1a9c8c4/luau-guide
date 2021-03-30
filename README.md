@@ -323,7 +323,7 @@ for i = 1, 10, 1 do
 	print(i)
 end
 ```
-The first number, 1, is where you want to start. The secodn number is your goal, i.e. the number you want to reach. The third number is the step, i.e. how much to increment the start by on each cycle of the loop. By default the third number is optional; so the code could boil down to
+The first number, 1, is where you want to start. The seconnumber is your goal, i.e. the number you want to reach. The third number is the step, i.e. how much to increment the start by on each cycle of the loop. By default the third number is optional; so the code could boil down to
 ```lua
 for i = 1, 10 do
 	print(i)
