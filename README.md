@@ -139,11 +139,12 @@ From now on I will be showing expected outputs by doing --> \[output] after the 
 Many things in Lua will require you to provide code in order to run. An example would be functions. But how do you tell Lua when the code is over? `end` is there for you.
 
 Here is an example of using `end` in a function:
-```function endThis()
+```lua
+function endThis()
 
 end -- An end is here
 ```
-Confused? I get you. Here's an example showing the function and the end. Everything to the right of the `|` is the code that will be run when the function is called.
+Confused? I get you. Here's an example showing the function and the end. Everything to the right of the `|` is the code that will be ran when the function is called.
 ```lua
 -- This code won't actually work, it's just an example
 function endThis() 
