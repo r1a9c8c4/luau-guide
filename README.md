@@ -1,17 +1,17 @@
 # lua-guide
-If you'd like to make changes to this, DM racc#1984 and I'll probably make you a contributor. Alternatively, you can make a pull request.
+If you'd like to make changes to this, make a pull request.
 ## What is Luau?
-Luau is a modified version of [Lua](https://www.lua.org/) used for game development on Roblox. It has some features removed and others added. 
+[Luau](https://luau-lang.org/) is a modified version of [Lua](https://www.lua.org/) used for game development on Roblox. It has some features removed and others added. 
 ## Making a script on Roblox
 Roblox has 3 different types of scripts: Server scripts, local scripts, and module scripts. I'll discuss the differences later, but for now we'll just start off with server scripts.
 
-To create a server script, go into Roblox Studio. Server scripts will run in the workspace, in GUIs, and in ServerScriptService. We'll make one in the ServerScriptService. Go into your Explorer menu (View -> Explorer) and hover over ServerScriptService. Right click on it and then click on `Insert Object...`. Search for just "Script", and click on `Script`. You should now be in the script editor. If you ever leave the script editor you can get back into it by double clicking on the script you want to edit.
+To create a server script, go into Roblox Studio. Server scripts will run in the workspace, in GUIs, and in ServerScriptService. We'll make one in the ServerScriptService. Go into your Explorer menu (View -> Explorer) and hover over ServerScriptService. Click on the `+` icon, search for just "Script", and click on `Script` (not LocalScript). You should now be in the script editor. If you ever leave the script editor you can get back into it by double clicking on the script you want to edit.
 
 
-![Example](https://cdn.discordapp.com/attachments/427201562293698562/788524366169112576/unknown.png)
+![Example](https://raw.githubusercontent.com/wawashish/luau-guide/main/sc0.png)
 
 
-To run a script, go to Home -> Play.
+To run a script, go to Home -> Play (Or press F5).
 ## Variables
 We will start off with variables. Variables are a key component of programming. They can hold values which is extremely useful. There are 2 types of variables - local and global. I'll explain the differences later. (I know, a lot of promises) You should always use local variables whenever possible for many reasons.
 
@@ -269,18 +269,18 @@ print(swordData["damagePerSwing"]) --> 10
 This is helpful for if you need to access a key that has a space in its name, or if you need to access a key using a variable.
 
 Keep in mind that the length operator does not take into account the length of a table's dictionary part.
-## wait
-`wait`, as it implies, is a function that *waits* for the amount of seconds provided.
+## task.wait
+`task.wait`, as it implies, is a function that *waits* for the amount of seconds provided.
 ```lua
-wait(5)
+task.wait(5)
 print("hello")
 ```
-After *about* 5 seconds you will see `"hello"` printed in the console. Why did I say about? That is because `wait` does not wait the exact amount of time provided. It only guarantees that it will wait at *least* that amount of time. Sometimes it can take longer. `wait` returns the actual time waited, so if you need to make changes over time, you can make use of the delta time.
+After 5 seconds you will see `"hello"` printed in the console. `task.wait` returns the actual time waited, so if you need to make changes over time, you can make use of the delta time.
 ```lua
-local dt = wait(5)
-print(dt) --> 5.0061945999987
+local dt = task.wait(5)
+print(dt) --> 5.01104179999993
 ```
-The number printed was just an example when I ran it; as mentioned `wait` doesn't always wait the same amount.
+The number printed was just an example when I ran it;  `task.wait` doesn't always wait the same amount.
 ## Loops
 Have you ever found yourself needing to repeat code for several amounts of times? Loops are your friend! The simplest loop, the `while` loop, executes its body *while* (see what I did there?) the given condition is met:
 ```lua
@@ -294,6 +294,18 @@ end
 print("Loop finished")
 ```
 When you execute this, you will notice that the `num` variable is incremented by 1 on each cycle of the loop, *while* `num` was less than 10. Once `num` hit 10, the loop broke as `10 < 10` is false. And after that, `"Loop finished"` prints. Code under loops doesn't execute until after the loop terminates.
+
+*if while loops that runs for a long time, it is required to use task.wait() every once in a while to avoid freezing the game.*
+The following code will make it so it calls `task.wait()` every 20 loops
+```lua
+local count = 0
+while true do
+	count += 1
+	if count % 20 == 0 then
+		task.wait()
+	end
+end
+```
 
 The next kind of loop, `repeat until`, will as it implies, *repeat* its body *until* the given condition is met.
 
@@ -353,36 +365,46 @@ end
 7
 ]]
 ```
+
+## The main globals
+The most used globals are `workspace`, `game`, `Enum` and `script`
+
 ## Instances
 Instances are the building blocks of any Roblox game. Parts, scripts, even the Workspace itself is an instance. Each instance has a specific type of class that they are. For example, the workspace's class is Workspace while a part's class is Part.
 
 Instances are managed by a Parent-Child relationship. All instances (excluding the **game** global) have a parent. These instances can then have any number of children. For example, the **Workspace** is a child of the **game**, and the **Terrain**'s parent is the **Workspace**. You can access the children of an instance in a manner much like a dictionary. Each child's name acts as the key for the specific child. An example is below.
 ```lua
-print(game.Workspace.Baseplate) --> Baseplate
+print(workspace.Baseplate) --> Baseplate
 ```
 And just like a normal dictionary, you can access a child by using square brackets as well.
 ```lua
-print(game.Workspace["Baseplate"]) --> Baseplate
+print(workspace["Baseplate"]) --> Baseplate
 ```
 
 Properties, much like their name suggests, are values that determine specific features of an instance. Some properties are unique to a specific class, some are across multiple classes, and some are across ALL classes. Properties typically have a specific value type.
 
 Properties are accessed like you'd access a child. Keep in mind that if a property and a child have the same name, then the property comes first when indexing.
 ```lua
-print(game.Workspace.Baseplate.Name) --> Baseplate
-print(game.Workspace.Baseplate["Name"]) --> Baseplate
+print(workspace.Baseplate.Name) --> Baseplate
+print(workspace.Baseplate["Name"]) --> Baseplate
 ```
 Editing a property is similar to editing the value of a dictionary. You use an equal sign.
 ```lua
-local baseplate = game.Workspace.Baseplate
+local baseplate = workspace.Baseplate
 print(baseplate.Name) --> Baseplate
 baseplate.Name = "Platebase"
 print(baseplate.Name) --> Platebase
 ```
 The two most important properties are **Parent** and **Name**. The **Parent** property determines the parent of an instance, while the **Name** property determines the name of an instance. Remember that the name of an instance is the key when indexing it from its parent.
 ```lua
-print(game.Workspace.Baseplate.Parent) --> Workspace
-game.Workspace.Baseplate.Name = "Platebase"
-game.Workspace.Platebase.Parent = game.ServerStorage -- ServerStorage is a child of the game global used for storing items that can only be seen by the server. The server-client relationship will be explaiend later.
+print(workspace.Baseplate.Parent) --> Workspace
+workspace.Baseplate.Name = "Platebase"
+workspace.Platebase.Parent = game.ServerStorage -- ServerStorage is a child of the game global used for storing items that can only be seen by the server. The server-client relationship will be explaiend later.
 print(game.ServerStorage.Platebase) --> Platebase
+```
+
+Sometimes, when getting a part from the client, the part won't be replicated immediately (because it is loaded after the game intially loads.) So the use of `WaitForChild` is required.
+```lua
+local part = workspace:WaitForChild('MyPart')
+part.Name = 'Part0'
 ```
